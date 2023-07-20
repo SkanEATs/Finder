@@ -15,10 +15,10 @@ export default function Cta() {
           Eat Local
         </h2>
         <div className="my-16">
-          <button
+        {/*  <button
             href="#"
             className="p-3 px-6 pt-2 text-brightRed bg-white rounded-full shadow-2xl baseline hover:bg-mint hover:text-white"
-            >I'm Feeling Hungry </button>
+   >I'm Feeling Hungry </button> */}
         </div>
       </div>
     </section>
