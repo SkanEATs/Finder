@@ -41,8 +41,8 @@ export default function Header({onSearchInputChange}) {
 
           {/* Menu Items */}
           <div className='space-x-6'>
-            <a href="#" className='hover:text-mint'>About</a>
-            <a href="#" className='hover:text-mint'>Contact</a>
+            <a href="https://sprw.io/stt-i4B1KmPMcYDh9BergCkuie" className='hover:text-mint'>Take our Survey for a Future Discount!</a>
+           {/* <a href="#" className='hover:text-mint'>Contact</a> */}
           </div>
           
         
