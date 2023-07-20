@@ -89,4 +89,4 @@ const GetRestaurants = ({coordinates}) => {
 }
    export default GetRestaurants
 
-   //'X-RapidAPI-Key': '96d3145458msh88398ed9642d141p10ef6ajsne53e90f42611',
+   //'X-RapidAPI-Key': '0f936a69d2msh4ec2661c6990d92p130d5djsnebac8ee408f5',
