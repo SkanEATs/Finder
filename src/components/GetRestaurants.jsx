@@ -28,7 +28,7 @@ const GetRestaurants = ({coordinates}) => {
             // lang: 'en_US'
           },
           headers: {
-            'X-RapidAPI-Key': '123b083e7bmshd330d9562f79b6ep1bb142jsn7aaad90d7441',
+            'X-RapidAPI-Key': '0f936a69d2msh4ec2661c6990d92p130d5djsnebac8ee408f5',
             'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
           }
         };

@@ -22,17 +22,13 @@ Please enter a location and our application will popualate a list of dining esta
 
 ## URL
 
-The deployed application can be viewed at the following URL: https://main--extraordinary-paprenjak-5307d5.netlify.app/
+The deployed application can be viewed at the following URL: https://skaneats.com
 
 ## Credits
 
 The contributers to this project were:
-
-@sdjhen
-@rezman88
-@maokuti
-@damianfearon
+@futjr 
 
 ## License
 
-NONE
+Business License V3

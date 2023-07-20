@@ -15,7 +15,7 @@ export default function Header({onSearchInputChange}) {
           
           <div className="pt-2 flex items-center">
           <img src={logo} alt="logo" className='w-16' />
-            <h2 className=' whitespace-nowrap font-bold text-regal-blue'>LettuceDeliver</h2>
+            <h2 className=' whitespace-nowrap font-bold text-regal-blue'>SkanEATs</h2>
           </div>
 
 {/* Search Bar */}
