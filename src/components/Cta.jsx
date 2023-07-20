@@ -12,7 +12,7 @@ export default function Cta() {
         <h2
           className="text-5xl font-bold leading-tight text-center text-white md:text-4xl md:max-w-xl md:text-left"
         >
-          Eat Local
+          Eat Local <br/>Click the Button Below to Use AI to Pick Your Meal
         </h2>
         <div className="my-16">
         {/*  <button

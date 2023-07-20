@@ -56,27 +56,27 @@ export default function Header({ onSearchInputChange }) {
   return (
     <div className="w-full bg-white">
       {/* Navbar */}
-      <nav className="px-6">
+      <nav className="px-2 sm:px-6">
         {/* Flex Container */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between">
           {/* Logo */}
           <div className="pt-2 flex items-center">
             <img src={logo} alt="logo" className="w-16" />
-            <h2 className="whitespace-nowrap font-bold text-regal-blue">
+            <h2 className="whitespace-nowrap font-bold text-regal-blue text-lg sm:text-base">
               SkanEATs
             </h2>
           </div>
 
           {/* Menu Items */}
-          <div className="space-x-6">
+          <div className="space-y-2 sm:space-x-6 sm:space-y-0 mt-2 sm:mt-0 text-sm sm:text-base">
             <a
               href="https://sprw.io/stt-i4B1KmPMcYDh9BergCkuie"
-              className="hover:text-mint"
+              className="block sm:inline hover:text-mint"
             >
               Take our Survey for a Future Discount!
             </a>
-            <a href="https://instagram.com/skaneats.315" className='hover:text-regal-blue'>Follow Us On Instagram</a>
-            <a href="https://www.change.org/p/bring-skaneats-to-life?recruiter=1312696671&recruited_by_id=47136770-26ee-11ee-81a1-49f36670b469&utm_source=share_petition&utm_campaign=share_for_starters_page&utm_medium=instagram" className='hover:text-regal-blue'>Sign Our Change.Org Petition</a>
+            <a href="https://instagram.com/skaneats.315" className='block sm:inline hover:text-regal-blue'>Follow Us On Instagram</a>
+            <a href="https://www.change.org/p/bring-skaneats-to-life?recruiter=1312696671&recruited_by_id=47136770-26ee-11ee-81a1-49f36670b469&utm_source=share_petition&utm_campaign=share_for_starters_page&utm_medium=instagram" className='block sm:inline hover:text-regal-blue'>Sign Our Change.Org Petition</a>
            {/* <button
               className="px-4 py-2 rounded text-white bg-regal-blue hover:bg-mint"
               onClick={toggleModal}
