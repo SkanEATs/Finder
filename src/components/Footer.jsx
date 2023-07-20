@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="flex justify-around space-x-32">
           <div className="flex flex-col space-y-3 text-white">
             <a href="/" className='hover:text-regal-blue'>Home</a>
-            <a href="https://instagram.com/skaneats.315" className='hover:text-regal-blue'>Contact</a>
+            <a href="https://instagram.com/skaneats.315" className='hover:text-regal-blue'>Follow Us On Instagram</a>
           </div>
           <div className="flex flex-col space-y-3 text-white">
             <a href="email:info@skaneats.com" className="hover:text-regal-blue">Careers</a>
