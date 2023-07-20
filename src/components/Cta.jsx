@@ -12,7 +12,7 @@ export default function Cta() {
         <h2
           className="text-5xl font-bold leading-tight text-center text-white md:text-4xl md:max-w-xl md:text-left"
         >
-          Dine With Us Today!
+          Eat Local
         </h2>
         <div className="my-16">
           <button

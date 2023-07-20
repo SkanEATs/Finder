@@ -1,54 +1,96 @@
-import React from 'react'
-import logo from './logo.png'
+import React, { useState } from 'react';
+import logo from './logo.png';
 
-export default function Header({onSearchInputChange}) {
-  const handleInputChange = (event) => {
-    onSearchInputChange(event.target.value)
-  }
+function Modal({ isOpen, toggle, title }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(name, email);
+    toggle();
+  };
+
+  if (!isOpen) return null;
+
   return (
-    <div className='w-full bg-white'>
+    <div className="modal-overlay">
+      <div className="modal">
+        <button className="modal-close" onClick={toggle}>&times;</button>
+        <h2>{title}</h2>
+        <p>Subscribe to get the latest updates</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your name"
+            required
+          />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email"
+            required
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+
+export default function Header({ onSearchInputChange }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleInputChange = (event) => {
+    onSearchInputChange(event.target.value);
+  };
+
+  return (
+    <div className="w-full bg-white">
       {/* Navbar */}
-      <nav className="  px-6">
+      <nav className="px-6">
         {/* Flex Container */}
-        <div className='flex items-center justify-between'>
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          
           <div className="pt-2 flex items-center">
-          <img src={logo} alt="logo" className='w-16' />
-            <h2 className=' whitespace-nowrap font-bold text-regal-blue'>SkanEATs</h2>
+            <img src={logo} alt="logo" className="w-16" />
+            <h2 className="whitespace-nowrap font-bold text-regal-blue">
+              SkanEATs
+            </h2>
           </div>
-
-{/* Search Bar */}
-<div className='max-w-md  w-full m-5'>
-    <button className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-mint overflow-hidden" id='searchbar'>
-        <div className="grid place-items-center h-full w-12 text-clean">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-        </div>
-
-        <input
-        className="peer h-full w-full outline-none text-sm text-regal-blue pr-2 bg-clean "
-        type="text"
-        id="search"
-        placeholder=" I'm Feeling Hungry..."
-        onChange={handleInputChange} 
-        onSubmit= {handleInputChange}/> 
-
-    </button>
-</div>
-
 
           {/* Menu Items */}
-          <div className='space-x-6'>
-            <a href="https://sprw.io/stt-i4B1KmPMcYDh9BergCkuie" className='hover:text-mint'>Take our Survey for a Future Discount!</a>
-           {/* <a href="#" className='hover:text-mint'>Contact</a> */}
+          <div className="space-x-6">
+            <a
+              href="https://sprw.io/stt-i4B1KmPMcYDh9BergCkuie"
+              className="hover:text-mint"
+            >
+              Take our Survey for a Future Discount!
+            </a>
+            <a href="https://instagram.com/skaneats.315" className='hover:text-regal-blue'>Follow Us On Instagram</a>
+            <a href="https://www.change.org/p/bring-skaneats-to-life?recruiter=1312696671&recruited_by_id=47136770-26ee-11ee-81a1-49f36670b469&utm_source=share_petition&utm_campaign=share_for_starters_page&utm_medium=instagram" className='hover:text-regal-blue'>Sign Our Change.Org Petition</a>
+           {/* <button
+              className="px-4 py-2 rounded text-white bg-regal-blue hover:bg-mint"
+              onClick={toggleModal}
+            >
+              Subscribe
+            </button>
+            <Modal
+              isOpen={isModalOpen}
+              toggle={toggleModal}
+              title="Subscribe to our newsletter"
+  /> */}
           </div>
-          
-        
-
-</div>
+        </div>
       </nav>
     </div>
-  )
+  );
 }

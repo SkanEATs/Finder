@@ -22,34 +22,33 @@ export default function Footer() {
        {/* Social Links Container & Icons */}
        <div className="flex justify-center space-x-4">
 
-       <a href="#">
+       <a href="https://facebook.com/VoiEdge">
               <img src="/img/icon-facebook.svg" alt="" className="h-8" />
             </a>
             
             {/* Twitter */}
-            <a href="#">
+            <a href="https://twiiter.com/skaneats315">
               <img src="/img/icon-twitter.svg" alt="" className="h-8" />
             </a>
            
             {/* Instagram */}
-            <a href="#">
+            <a href="https://instagram.com/skaneats.315">
               <img src="/img/icon-instagram.svg" alt="" className="h-8" />
             </a>
 
-            {/* YouTube */}
+            {/* YouTube 
             <a href="#">
               <img src="/img/icon-youtube.svg" alt="" className="h-8" />
-            </a>
-           </div>
+            </a> */}
+           </div> 
 
           {/* List Container */}
         <div className="flex justify-around space-x-32">
           <div className="flex flex-col space-y-3 text-white">
             <a href="/" className='hover:text-regal-blue'>Home</a>
-            <a href="https://instagram.com/skaneats.315" className='hover:text-regal-blue'>Follow Us On Instagram</a>
           </div>
           <div className="flex flex-col space-y-3 text-white">
-            <a href="email:info@skaneats.com" className="hover:text-regal-blue">Careers</a>
+            <a href="mailto:info@skaneats.com" className="hover:text-regal-blue">Not Listed? Reach Out to be added to the alogrithm.</a>
            {/* <a href="#" className="hover:text-regal-blue">Corporate Social Responsibility</a>
             <a href="#" className="hover:text-regal-blue">Green Facts</a>
   <a href="#" className="hover:text-regal-blue">Privacy Policy</a> */}

@@ -3,48 +3,43 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {motion} from "framer-motion";
 
-//include import from another js file for location to coordinates
-
-//const axios = require('axios').default
-
-// Defining the GetRestaurants functional component that takes in coordinates as a prop
-const GetRestaurants = ({coordinates}) => {
+// Defining the GetRestaurants functional component
+const GetRestaurants = () => {
   // Setting the initial state of restaurants to an empty array
   const [restaurants, setRestaurants] = useState ([])
-    // Using the useEffect hook to make an API call using axios and the RapidAPI service
-    useEffect (() => {
-      if (coordinates.lat && coordinates.lon) {
-        const options = {
-          method: 'GET',
-          url: 'https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng',
-          params: {
-            latitude: coordinates.lat,
-            longitude: coordinates.lon,
-            limit: '50',
-            // currency: 'USD',
-            distance: '2',
-            // open_now: 'false',
-            // lunit: 'km',
-            // lang: 'en_US'
-          },
-          headers: {
-            'X-RapidAPI-Key': '0f936a69d2msh4ec2661c6990d92p130d5djsnebac8ee408f5',
-            'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
-          }
-        };
-        // Making the API call using axios, filtering the reponse data to include only restaurants with a name, and setting the state using setRestaurants
-        axios.request(options).then(function (response) {
-          // Logging the response data to the console
-          console.log(response.data)
-          // Setting the state of restaurants to the filtered data
-          const filteredData = response.data.data.filter((restaurant) => restaurant.name )
-          setRestaurants(filteredData)
-          // Logging any errors to the console
-        }).catch(function (error) {
-          console.error(error);
-        });
-      }
-    }, [coordinates])
+
+  // Hard-coded coordinates for Skaneateles, NY
+  const coordinates = { lat: 42.9467, lon: -76.4294 }
+
+  // Using the useEffect hook to make an API call using axios and the RapidAPI service
+  useEffect (() => {
+      const options = {
+        method: 'GET',
+        url: 'https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng',
+        params: {
+          latitude: coordinates.lat,
+          longitude: coordinates.lon,
+          limit: '100',
+          distance: '2',
+        },
+        headers: {
+          'X-RapidAPI-Key': '0f936a69d2msh4ec2661c6990d92p130d5djsnebac8ee408f5',
+          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+        }
+      };
+
+      // Making the API call using axios, filtering the reponse data to include only restaurants with a name, and setting the state using setRestaurants
+      axios.request(options).then(function (response) {
+        // Logging the response data to the console
+        console.log(response.data)
+        // Setting the state of restaurants to the filtered data
+        const filteredData = response.data.data.filter((restaurant) => restaurant.name )
+        setRestaurants(filteredData)
+        // Logging any errors to the console
+      }).catch(function (error) {
+        console.error(error);
+      });
+  }, [])
 
   // Defining the animation effects using motion variants
   const cardVariant = {
@@ -88,5 +83,3 @@ const GetRestaurants = ({coordinates}) => {
   )
 }
    export default GetRestaurants
-
-   //'X-RapidAPI-Key': '0f936a69d2msh4ec2661c6990d92p130d5djsnebac8ee408f5',
