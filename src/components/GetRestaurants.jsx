@@ -5,12 +5,10 @@ import { motion } from "framer-motion";
 const GetRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [selectedRestaurantIndex, setSelectedRestaurantIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const coordinates = { lat: 42.9467, lon: -76.4294 };
 
   const loadRestaurants = () => {
     console.log('Button clicked');
-    setIsLoading(true);
     const options = {
       method: 'GET',
       url: 'https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng',
@@ -28,12 +26,15 @@ const GetRestaurants = () => {
 
     axios.request(options).then(function (response) {
       const filteredData = response.data.data.filter((restaurant) => restaurant.name);
-      setRestaurants(filteredData);
-      setSelectedRestaurantIndex(Math.floor(Math.random() * filteredData.length));
-      setIsLoading(false);
+      fetch(process.env.PUBLIC_URL + '/restaurants.json')
+        .then(response => response.json())
+        .then(data => {
+          const mergedData = [...filteredData, ...data];
+          setRestaurants(mergedData);
+          setSelectedRestaurantIndex(Math.floor(Math.random() * mergedData.length));
+        });
     }).catch(function (error) {
       console.error(error);
-      setIsLoading(false);
     });
   };
 
