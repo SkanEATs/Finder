@@ -3,8 +3,36 @@
       "name": "Mr. Pudders",
       "address": "687 W Genesee Street Rd",
       "phone": "315-685-3593",
-      "rating": 4.0,
+      "rating": 4.1,
       "website": "www.skaneatelessuites.com"
-    }
+    },
+    {
+        "name": "Mike's Pizzeria",
+        "address": "1388 E Genesee St",
+        "phone": "315-685-2222",
+        "rating": 4.4,
+        "website": "www.mikespizzeraskan.com"
+      },
+      {
+        "name": "Byrne Dairy & Deli",
+        "address": "1388 E Genesee St",
+        "phone": "315-685-4723",
+        "rating": 4.1,
+        "website": "www.byrnedairystores.com"
+      },
+      {
+        "name": "Skan Ellus Drive In",
+        "address": "1659 Cherry Valley Turnpike",
+        "phone": "315-685-8280",
+        "rating": 4.5,
+        "website": "www.skanellusdrivein.com"
+      },
+      {
+        "name": "Joelle's French Bistro",
+        "address": "4423 State St",
+        "phone": "315-685-3063",
+        "rating": 4.5,
+        "website": "www.facebook.com/people/Joelles-French-Bistro/100063679953184"
+      }
   ]
   
