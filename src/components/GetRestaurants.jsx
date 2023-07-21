@@ -30,6 +30,13 @@ const GetRestaurants = () => {
         .then(response => response.json())
         .then(data => {
           const mergedData = [...filteredData, ...data];
+          
+          // Shuffling mergedData before setting it into state
+          for (let i = mergedData.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [mergedData[i], mergedData[j]] = [mergedData[j], mergedData[i]];
+          }
+
           setRestaurants(mergedData);
           setSelectedRestaurantIndex(Math.floor(Math.random() * mergedData.length));
         });
