@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 
 const GetRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [farms, setFarms] = useState([]);
   const [selectedRestaurantIndex, setSelectedRestaurantIndex] = useState(null);
+  const [selectedFarmIndex, setSelectedFarmIndex] = useState(null);
   const coordinates = { lat: 42.9467, lon: -76.4294 };
 
   const loadRestaurants = () => {
+    // Reset previously selected restaurant and farm
+    setSelectedRestaurantIndex(null);
+    setSelectedFarmIndex(null);
+    setFarms([]);
     console.log('Button clicked');
     const options = {
       method: 'GET',
@@ -30,8 +36,7 @@ const GetRestaurants = () => {
         .then(response => response.json())
         .then(data => {
           const mergedData = [...filteredData, ...data];
-          
-          // Shuffling mergedData before setting it into state
+
           for (let i = mergedData.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [mergedData[i], mergedData[j]] = [mergedData[j], mergedData[i]];
@@ -43,6 +48,27 @@ const GetRestaurants = () => {
     }).catch(function (error) {
       console.error(error);
     });
+  };
+
+  const loadFarms = () => {
+    // Reset previously selected restaurant and farm
+    setSelectedRestaurantIndex(null);
+    setSelectedFarmIndex(null);
+    setRestaurants([]);
+    console.log('Button clicked');
+    fetch(process.env.PUBLIC_URL + '/farms.json')
+      .then(response => response.json())
+      .then(data => {
+        for (let i = data.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data[i], data[j]] = [data[j], data[i]];
+        }
+
+        setFarms(data);
+        setSelectedFarmIndex(Math.floor(Math.random() * data.length));
+      }).catch(function (error) {
+        console.error(error);
+      });
   };
 
   const cardVariant = {
@@ -59,6 +85,13 @@ const GetRestaurants = () => {
         >
             I'm Feeling Hungry
         </button>
+        <button
+            href="#"
+            className="p-3 px-6 pt-2 text-brightRed bg-white rounded-full shadow-2xl baseline hover:bg-mint hover:text-white mb-10"
+            onClick={loadFarms}
+        >
+            I'm Feeling Farmy
+        </button>
         {selectedRestaurantIndex !== null && (
           <motion.div 
             key={selectedRestaurantIndex} 
@@ -68,7 +101,6 @@ const GetRestaurants = () => {
             variants = {cardVariant}
             transition = {{duration: 2.0}}
           >
-            {/* Rendering selected restaurant data here */}
             <h3 className="font-bold">{restaurants[selectedRestaurantIndex].name}</h3>
             <p>
             <span className="text-slate-500">Address:</span>
@@ -87,6 +119,33 @@ const GetRestaurants = () => {
             </p> 
           </motion.div>
         )}
+        {selectedFarmIndex !== null && (
+          <motion.div 
+            key={selectedFarmIndex} 
+            className="farm bg-white p-4 rounded-lg shadow-lg border-2 border-red-500 mb-10 w-full"
+            initial = "hidden"
+            animate = "visible"
+            variants = {cardVariant}
+            transition = {{duration: 2.0}}
+          >
+            <h3 className="font-bold">{farms[selectedFarmIndex].name}</h3>
+            <p>
+            <span className="text-slate-500">Address:</span>
+            <span className="float-right">{farms[selectedFarmIndex].address}</span>
+            </p>
+            <p>
+            <span className="text-slate-500">Phone:</span> 
+            <a href={`tel:${farms[selectedFarmIndex].phone}`} className=" float-right text-blue-400">{farms[selectedFarmIndex].phone}</a>
+            </p>
+            <p>
+            <span className="text-slate-500">Rating:</span> 
+            <span className="float-right">{farms[selectedFarmIndex].rating}</span>
+            </p>
+            <p> 
+            <a href={`${farms[selectedFarmIndex].website}`} className="text-blue-400">Website</a>
+            </p> 
+          </motion.div>
+        )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
         {restaurants.map((restaurant, index) => (
             index !== selectedRestaurantIndex && (
@@ -100,19 +159,48 @@ const GetRestaurants = () => {
               >
                 <h3 className="font-bold">{restaurant.name}</h3>
                 <p>
-                  <span className="text-slate-500">Address:</span>
-                  <span className="float-right">{restaurant.address}</span>
+                <span className="text-slate-500">Address:</span>
+                <span className="float-right">{restaurant.address}</span>
                 </p>
                 <p>
-                  <span className="text-slate-500">Phone:</span> 
-                  <a href={`tel:${restaurant.phone}`} className=" float-right text-blue-400">{restaurant.phone}</a>
+                <span className="text-slate-500">Phone:</span> 
+                <a href={`tel:${restaurant.phone}`} className=" float-right text-blue-400">{restaurant.phone}</a>
                 </p>
                 <p>
-                  <span className="text-slate-500">Rating:</span> 
-                  <span className="float-right">{restaurant.rating}</span>
+                <span className="text-slate-500">Rating:</span> 
+                <span className="float-right">{restaurant.rating}</span>
                 </p>
                 <p> 
-                  <a href={`${restaurant.website}`} className="text-blue-400">Website</a>
+                <a href={`${restaurant.website}`} className="text-blue-400">Website</a>
+                </p> 
+              </motion.div>
+            )
+        ))}
+        {farms.map((farm, index) => (
+            index !== selectedFarmIndex && (
+              <motion.div 
+                key={index} 
+                className="farm bg-white p-4 rounded-lg shadow-lg"
+                initial = "hidden"
+                animate = "visible"
+                variants = {cardVariant}
+                transition = {{duration: 2.0}}
+              >
+                <h3 className="font-bold">{farm.name}</h3>
+                <p>
+                <span className="text-slate-500">Address:</span>
+                <span className="float-right">{farm.address}</span>
+                </p>
+                <p>
+                <span className="text-slate-500">Phone:</span> 
+                <a href={`tel:${farm.phone}`} className=" float-right text-blue-400">{farm.phone}</a>
+                </p>
+                <p>
+                <span className="text-slate-500">Rating:</span> 
+                <span className="float-right">{farm.rating}</span>
+                </p>
+                <p> 
+                <a href={`${farm.website}`} className="text-blue-400">Website</a>
                 </p> 
               </motion.div>
             )

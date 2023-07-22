@@ -1,0 +1,66 @@
+[
+    {
+      "name": "Duckett Farms",
+      "address": "706 Franklin Rd",
+      "phone": "315-685-6063",
+      "rating": 5.0,
+      "website": "www.skaneats.com"
+    },
+    {
+        "name": "Strawberry Fields Hydroponic Farm",
+        "address": "4240 E Genesee St Rd",
+        "phone": "315-751-5657",
+        "rating": 4.5,
+        "website": "www.strawberryfieldsandflorist.com"
+      },
+      {
+        "name": "Twin Birch Farms",
+        "address": "Benson Rd",
+        "phone": "315-784-5625",
+        "rating": 5.0,
+        "website": "www.skaneats.com"
+      },
+      {
+        "name": "Aurora Farms",
+        "address": "3255 E Lake Rd",
+        "phone": "315-685-3200",
+        "rating": 5.0,
+        "website": "www.skaneats.com"
+      },
+      {
+        "name": "Doce Lume Farm",
+        "address": "3130 E Lake Rd",
+        "phone": "315-626-5209",
+        "rating": 5.0,
+        "website": "www.instagram.com/docelumefarm/"
+      },
+      {
+        "name": "Greenfield Farms",
+        "address": "2696 W Lake Rd",
+        "phone": "315-685-5483",
+        "rating": 5.0,
+        "website": "www.skaneats.com/"
+      },
+      {
+        "name": "Black Brook Farm",
+        "address": "3351 Rickard Rd",
+        "phone": "315-237-2859",
+        "rating": 5.0,
+        "website": "www.facebook.com/blackbrookorganic/"
+      },
+      {
+        "name": "Fesko Farms",
+        "address": "1261 E Lake Rd",
+        "phone": "315-636-1125",
+        "rating": 4.5,
+        "website": "www.fesko.com"
+      },
+      {
+        "name": "Anyela's Vineyards",
+        "address": "2433 W Lake Rd",
+        "phone": "315-636-3797",
+        "rating": 4.5,
+        "website": "www.anyelasvineyards.com/"
+      }
+  ]
+  
