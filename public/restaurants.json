@@ -33,6 +33,27 @@
         "phone": "315-685-3063",
         "rating": 4.5,
         "website": "www.facebook.com/people/Joelles-French-Bistro/100063679953184"
+      },
+      {
+        "name": "Mandana Inn",
+        "address": "1937 W Lake Rd",
+        "phone": "315-685-7798",
+        "rating": 4.0,
+        "website": "www.mandanainnskaneateles.com/"
+      },
+      {
+        "name": "Heart'n Hand",
+        "address": "4463 State Street Rd",
+        "phone": "315-685-5886",
+        "rating": 5.0,
+        "website": "www.heartnhandpies.com"
+      },
+      {
+        "name": "Red Rooster Pub",
+        "address": "4618 Jordan Rd",
+        "phone": "315-752-5825",
+        "rating": 5.0,
+        "website": "www.redroosterpubandeatery.com"
       }
   ]
   
