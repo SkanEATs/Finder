@@ -5,16 +5,21 @@ import { motion } from "framer-motion";
 const GetRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [farms, setFarms] = useState([]);
+  const [shops, setShops] = useState([]);
   const [selectedRestaurantIndex, setSelectedRestaurantIndex] = useState(null);
   const [selectedFarmIndex, setSelectedFarmIndex] = useState(null);
+  const [selectedShopsIndex, setSelectedShopsIndex] = useState(null);
   const coordinates = { lat: 42.9467, lon: -76.4294 };
 
   const loadRestaurants = () => {
-    // Reset previously selected restaurant and farm
+    // Reset all selected indices and data arrays
     setSelectedRestaurantIndex(null);
     setSelectedFarmIndex(null);
+    setSelectedShopsIndex(null);
+    setRestaurants([]);
     setFarms([]);
-    console.log('Button clicked');
+    setShops([]);
+    console.log('Restaurants loading');
     const options = {
       method: 'GET',
       url: 'https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng',
@@ -29,19 +34,19 @@ const GetRestaurants = () => {
         'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
       }
     };
-
+  
     axios.request(options).then(function (response) {
       const filteredData = response.data.data.filter((restaurant) => restaurant.name);
       fetch(process.env.PUBLIC_URL + '/restaurants.json')
         .then(response => response.json())
         .then(data => {
           const mergedData = [...filteredData, ...data];
-
+  
           for (let i = mergedData.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [mergedData[i], mergedData[j]] = [mergedData[j], mergedData[i]];
           }
-
+  
           setRestaurants(mergedData);
           setSelectedRestaurantIndex(Math.floor(Math.random() * mergedData.length));
         });
@@ -49,13 +54,16 @@ const GetRestaurants = () => {
       console.error(error);
     });
   };
-
+  
   const loadFarms = () => {
-    // Reset previously selected restaurant and farm
+    // Reset all selected indices and data arrays
     setSelectedRestaurantIndex(null);
     setSelectedFarmIndex(null);
+    setSelectedShopsIndex(null);
     setRestaurants([]);
-    console.log('Button clicked');
+    setFarms([]);
+    setShops([]);
+    console.log('Farms loading');
     fetch(process.env.PUBLIC_URL + '/farms.json')
       .then(response => response.json())
       .then(data => {
@@ -63,13 +71,38 @@ const GetRestaurants = () => {
           const j = Math.floor(Math.random() * (i + 1));
           [data[i], data[j]] = [data[j], data[i]];
         }
-
+  
         setFarms(data);
         setSelectedFarmIndex(Math.floor(Math.random() * data.length));
       }).catch(function (error) {
         console.error(error);
       });
   };
+  
+  const loadShops = () => {
+    // Reset all selected indices and data arrays
+    setSelectedRestaurantIndex(null);
+    setSelectedFarmIndex(null);
+    setSelectedShopsIndex(null);
+    setRestaurants([]);
+    setFarms([]);
+    setShops([]);
+    console.log('Shops loading');
+    fetch(process.env.PUBLIC_URL + '/shops.json')
+      .then(response => response.json())
+      .then(data => {
+        for (let i = data.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data[i], data[j]] = [data[j], data[i]];
+        }
+  
+        setShops(data);
+        setSelectedShopsIndex(Math.floor(Math.random() * data.length));
+      }).catch(function (error) {
+        console.error(error);
+      });
+  };
+  
 
   const cardVariant = {
     hidden: {opacity:0},
@@ -91,6 +124,13 @@ const GetRestaurants = () => {
             onClick={loadFarms}
         >
             I'm Feeling Farmy
+        </button>
+        <button
+            href="#"
+            className="p-3 px-6 pt-2 text-brightRed bg-white rounded-full shadow-2xl baseline hover:bg-mint hover:text-white mb-10"
+            onClick={loadShops}
+        >
+            I'm Feeling Shoppy
         </button>
         {selectedRestaurantIndex !== null && (
           <motion.div 
@@ -144,6 +184,33 @@ const GetRestaurants = () => {
             <p> 
             <a href={`${farms[selectedFarmIndex].website}`} className="text-blue-400">Website</a>
             </p> 
+          </motion.div>
+        )}
+        {selectedShopsIndex !== null && (
+          <motion.div 
+            key={selectedShopsIndex} 
+            className="shop bg-white p-4 rounded-lg shadow-lg border-2 border-red-500 mb-10 w-full"
+            initial = "hidden"
+            animate = "visible"
+            variants = {cardVariant}
+            transition = {{duration: 2.0}}
+          >
+            <h3 className="font-bold">{shops[selectedShopsIndex].name}</h3>
+            <p>
+            <span className="text-slate-500">Address:</span>
+            <span className="float-right">{shops[selectedShopsIndex].address}</span>
+            </p>
+            <p>
+            <span className="text-slate-500">Phone:</span> 
+            <a href={`tel:${shops[selectedShopsIndex].phone}`} className=" float-right text-blue-400">{shops[selectedShopsIndex].phone}</a>
+            </p>
+            <p>
+            <span className="text-slate-500">Rating:</span> 
+            <span className="float-right">{shops[selectedShopsIndex].rating}</span>
+            </p>
+            <p> 
+            <a href={`${shops[selectedShopsIndex].website}`} className="text-blue-400">Website</a>
+            </p>
           </motion.div>
         )}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full">
@@ -201,6 +268,35 @@ const GetRestaurants = () => {
                 </p>
                 <p> 
                 <a href={`${farm.website}`} className="text-blue-400">Website</a>
+                </p> 
+              </motion.div>
+            )
+        ))}
+        {shops.map((shops, index) => (
+            index !== selectedShopsIndex && (
+              <motion.div 
+                key={index} 
+                className="shops bg-white p-4 rounded-lg shadow-lg"
+                initial = "hidden"
+                animate = "visible"
+                variants = {cardVariant}
+                transition = {{duration: 2.0}}
+              >
+                <h3 className="font-bold">{shops.name}</h3>
+                <p>
+                <span className="text-slate-500">Address:</span>
+                <span className="float-right">{shops.address}</span>
+                </p>
+                <p>
+                <span className="text-slate-500">Phone:</span> 
+                <a href={`tel:${shops.phone}`} className=" float-right text-blue-400">{shops.phone}</a>
+                </p>
+                <p>
+                <span className="text-slate-500">Rating:</span> 
+                <span className="float-right">{shops.rating}</span>
+                </p>
+                <p> 
+                <a href={`${shops.website}`} className="text-blue-400">Website</a>
                 </p> 
               </motion.div>
             )

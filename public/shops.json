@@ -1,0 +1,38 @@
+[
+    {
+      "name": "TOPS Friendly Markets",
+      "address": "40 Fennell St",
+      "phone": "315-685-7424",
+      "rating": 4.0,
+      "website": "www.topsmarkets.com"
+    },
+    {
+        "name": "Kinney Drugs Pharmacy",
+        "address": "23 Fennell St",
+        "phone": "315-685-2393",
+        "rating": 4.0,
+        "website": "www.kinneydrugs.com"
+      },
+      {
+        "name": "Rhubarb",
+        "address": "59 E Genesee St",
+        "phone": "315-685-5803",
+        "rating": 4.5,
+        "website": "www.facebook.com/RhubarbKitchenGarden/"
+      },
+      {
+        "name": "Red Apple Food Mart",
+        "address": "797 W Genesse St Rd",
+        "phone": "315-685-4831",
+        "rating": 4.5,
+        "website": "www.skaneats.com"
+      },
+      {
+        "name": "CVS Pharmacy",
+        "address": "27 Fennell St",
+        "phone": "315-685-6730",
+        "rating": 4.5,
+        "website": "www.cvs.com"
+      }
+  ]
+  

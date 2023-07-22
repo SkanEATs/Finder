@@ -54,6 +54,13 @@
         "phone": "315-752-5825",
         "rating": 4.5,
         "website": "www.redroosterpubandeatery.com"
+      },
+      {
+        "name": "Skaneateles Brewery",
+        "address": "4022 Mill rd",
+        "phone": "315-975-1747",
+        "rating": 4.5,
+        "website": "www.skanbrewery.com"
       }
   ]
   
